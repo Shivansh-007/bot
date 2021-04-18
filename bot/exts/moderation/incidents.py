@@ -155,7 +155,7 @@ async def make_message_link_embed(ctx: Context, message_link: str) -> discord.Em
         message = await message_convert_object.convert(ctx, message_link)
 
     except discord.DiscordException as e:
-        embed.title = f"{e}"
+        embed.title = str(e)
         embed.colour = Colours.soft_red
 
     else:
