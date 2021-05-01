@@ -1,7 +1,6 @@
 import asyncio
 import logging
 import re
-import textwrap
 import typing as t
 from datetime import datetime
 from enum import Enum
@@ -158,7 +157,7 @@ async def make_message_link_embed(ctx: Context, message_link: str) -> t.Optional
         text = message.content.lstrip()
         channel = message.channel
         shortened_text = text[:300] + (text[300:] and '...')
-    
+
         embed = discord.Embed(
             colour=discord.Colour.gold(),
             description=(
@@ -574,7 +573,7 @@ class Incidents(Cog):
             )
 
         else:
-            await self.message_link_embeds_cache.set(message.id, webhook_msg.id)
+            await self.message_link_embeds_cache.set(int(message.id), int(webhook_msg.id))
             log.trace("Message Link Embed Sent successfully!")
             return webhook_msg.id
 
